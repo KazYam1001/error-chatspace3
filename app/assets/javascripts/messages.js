@@ -12,7 +12,6 @@ $(document).on('turbolinks:load', function() {
     return html;
   }
 
-  // 自動更新用の関数
   const reloadMessages = () =>{
     const latestId = $('.message:last').data('message_id') || 0;
     $.ajax({
@@ -40,12 +39,10 @@ $(document).on('turbolinks:load', function() {
 
   let timerId
   const groupId  = $('.current-group').data('group_id');
-  // turbolinks:visitイベントでclearIntervalを発火させる
   document.addEventListener("turbolinks:visit", function(){
     clearInterval(timerId);
   });
 
-  // メッセージ送信
   $('#new_message').on('submit', function(e) {
     e.preventDefault();
     const formData = new FormData(this);
@@ -77,7 +74,6 @@ $(document).on('turbolinks:load', function() {
     });
   });
 
-  // 自動更新
   if (location.pathname == `/groups/${groupId}/messages`) {
     timerId = setInterval(reloadMessages, 5000);
   }
