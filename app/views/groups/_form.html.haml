@@ -27,7 +27,7 @@
         .chat-group-user.clearfix.js-chat-member{"data-id": current_user.id}
           = f.hidden_field :user_ids, value: current_user.id, name: "group[user_ids][]"
           %p.chat-group-user__name= current_user.name
-        - group.users.where.not(id: current_user.id).each do |user|
+        - group.users.each do |user|
           .chat-group-user.clearfix.js-chat-member{"data-id": user.id}
             = f.hidden_field :user_ids, value: user.id, name: "group[user_ids][]"
             %p.chat-group-user__name= user.name

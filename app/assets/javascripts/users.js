@@ -20,16 +20,14 @@ $(document).on('turbolinks:load', function() {
                   <p class='chat-group-user__name'>${name}</p>
                   <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</a>
                 </div>`;
-    $('.js-add-user').append(html);
   }
 
-  const userList = $('#user-search-result'); // 検索結果表示欄
+  const userList = $('#user-search-result');
 
   $('#user-search-field').on('input', (e)=> {
     userList.empty();
-    let userIds = []; // 検索から除くuser
-    $('.js-chat-member').each((index, el)=> userIds.push(el.dataset.id)); // 追加されたメンバーのidをuserIdsにpush
-    // 入力内容が空でなければ発火
+    let userIds = [];
+    $('.js-chat-member').each((index, el)=> userIds.push(el.dataset.id));
     if (input = $('#user-search-field').val()) {
       $.ajax({
         type: 'GET',
@@ -52,7 +50,8 @@ $(document).on('turbolinks:load', function() {
   });
 
   userList.on('click', '.chat-group-user__btn--add', function() {
-    addUser(this.dataset.name, this.dataset.id);
+    const html = addUser($(this).data('name'), $(this).data('id'));
+    $('.js-add-user').append(html);
     $(this).parent().remove();
   })
 

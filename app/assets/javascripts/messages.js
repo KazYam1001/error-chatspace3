@@ -1,7 +1,7 @@
 $(document).on('turbolinks:load', function() {
   const buildHTML = function (message) {
     const image = message.image ? `<img src="${message.image}">` : "" ;
-    const html = `<div class="message" data-message_id="${message.id}">
+    const html = `<div class="message">
                     <div class="upper-info">
                       <p class="upper-info__user">${message.user_name}</p>
                       <p class="upper-info__date">${message.created_at}</p>
