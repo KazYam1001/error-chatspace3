@@ -1,0 +1,10 @@
+.flash-box {
+  @include font_basic(white, 1rem, lighter, center);
+  width: 100vw;
+  .notice {
+    background-color: $light_blue;
+  }
+  .alert {
+    background-color: $alert_orange;
+  }
+}

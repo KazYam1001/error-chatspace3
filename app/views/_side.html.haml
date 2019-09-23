@@ -1,0 +1,16 @@
+.chat-side
+  .side-header
+    %p.side-header__user-name= current_user.name
+    %ul.user-menu
+      %li.user-menu__new-group
+        = link_to new_group_path do
+          = fa_icon 'edit'
+      %li.user-menu__edit-user
+        = link_to edit_user_path(current_user) do
+          = fa_icon 'cog'
+  .groups
+    - current_user.groups.includes(:messages).each do |group|
+      = link_to group_messages_path(group) do
+        .group
+          %p.group__group-name= group.name
+          %p.group__latest-message= group.show_last_message

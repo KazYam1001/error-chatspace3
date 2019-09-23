@@ -1,0 +1,14 @@
+@mixin link_color($color) {
+  color: $color;
+  &:visited, &:hover, &:active {
+    color: $color;
+  }
+}
+
+@mixin font_basic($color: #fff, $size: 16px, $weight: null, $aline: null, $line: null) {
+  color      : $color;
+  font-size  : $size;
+  font-weight: $weight;
+  text-align : $aline;
+  line-height: $line;
+}

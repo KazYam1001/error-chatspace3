@@ -1,0 +1,20 @@
+.chat-main
+  .main-header
+    .current-group{"data-group_id": @group.id}
+      %h2.current-group__name= @group.name
+      %ul.member-list
+        Member：
+        - @group.users.each do |user|
+          %li.member-list__member= user.name
+    = link_to edit_group_path(@group) do
+      .main-header__edit-btn Edit
+  .messages
+    = render @messages
+  .form
+    = form_for [@group, @message], html:{ class: "new-message" } do |f|
+      .input-box
+        = f.text_field :content, placeholder: "type a message", class: "input-box__text"
+        = f.label :image, class: "image-label" do
+          = fa_icon("image")
+          = f.file_field :image, class: "image-label__input"
+      = f.submit "Send", class: "new-message__submit-btn"
