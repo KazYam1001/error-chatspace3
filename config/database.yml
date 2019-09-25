@@ -8,7 +8,7 @@ default: &default
 
 development:
   <<: *default
-  database: chat-space3_development
+  database: error_chat_space3_development
 
 test:
   <<: *default
@@ -16,7 +16,7 @@ test:
 
 production:
   <<: *default
-  database: chat-space3_production
+  database: error_chat_space3_production
   username: root
   password: <%= ENV['DATABASE_PASSWORD'] %>
   socket: /var/lib/mysql/mysql.sock
